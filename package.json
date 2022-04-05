@@ -1,0 +1,20 @@
+{
+  "name": "format",
+  "version": "0.0.1",
+  "description": "Biblioteca de formatação de valores",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cestrixx/format.git"
+  },
+  "keywords": ["Format"],
+  "author": "Carlos Eduardo de Souza",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cestrixx/format/issues"
+  },
+  "homepage": "https://github.com/cestrixx/format#readme"
+}
