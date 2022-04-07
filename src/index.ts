@@ -60,7 +60,7 @@ export class Format {
         return radianValue;
     }
 
-    static decimalToRadian(value: string): number {
+    static decimalToRadian(value: string): number {   
         return 0;
     }
     static degreeMinutesToRadian(value: string): number {        

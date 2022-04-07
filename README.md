@@ -3,12 +3,14 @@
 Como usar?
 
 ```shell
-yarn add format
+yarn add https://github.com/cestrixx/format
 ```
 
-```js
-const format = require('format')
+```ts
+import { Format } from "format";
+
+const radianValue: number = this.decimalToRadian("-52.8898106671");
+console.log(radianValue); // 0.923101
 ```
 
-- toString() : Essa funcao...
-- toJson() : Essa funcao...
+- decimalToRadian(value) : Converte decimal string para radiano numérico
