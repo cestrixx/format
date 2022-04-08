@@ -100,8 +100,9 @@ export class Format {
 
     static radianToDegreeMinute(value: number, format = "%2d°%.4f'"): string {
         try {
-            const decimalDegress = radianToDegree(value);
-            const degrees = Math.floor(decimalDegress);
+            const decimalDegress = Math.abs(radianToDegree(value));
+            let degrees = Math.floor(decimalDegress);
+            if (value < 0) degrees *= -1
             const minutes = ((decimalDegress*60) % 60);
             return sprintf(format, degrees, minutes);            
         } catch (e) {
@@ -111,8 +112,9 @@ export class Format {
 
     static radianToDegreeMinuteSecond(value: number, format = "%d°%d'%.4f\""): string {
         try {
-            const decimalDegress = radianToDegree(value);
-            const degrees = Math.floor(decimalDegress);
+            const decimalDegress = Math.abs(radianToDegree(value));
+            let degrees = Math.floor(decimalDegress);
+            if (value < 0) degrees *= -1
             const minutes = Math.floor((decimalDegress*3600)/60) % 60
             const seconds = (decimalDegress*3600 % 60)
             return sprintf(format, degrees, minutes, seconds);            

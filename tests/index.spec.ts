@@ -10,7 +10,7 @@ describe("Format", () => {
     });
 
     it("String To String(Degree Minute Seconds) => d°d'd.d\"", () => {
-        expect(Format.stringToDegreeMinuteSecond("21°36'49.46684676355439\"", "%d°%d'%.14f\"")).toEqual("21°36'49.46684676354926\"");
+        expect(Format.stringToDegreeMinuteSecond("-21°36'49.46684676355439\"", "%d°%d'%.14f\"")).toEqual("-21°36'49.46684676354926\"");
     });
 
     it("String(Degrees) To Radian => d.d", () => {
