@@ -13,6 +13,10 @@ describe("Format", () => {
         expect(Format.stringToDegreeMinuteSecond("-21°36'49.46684676355439\"", "%d°%d'%.14f\"")).toEqual("-21°36'49.46684676354926\"");
     });
 
+    it("Degree Minute Second To Degree => d°d'd.d\"", () => {
+        expect(Format.degreeMinuteSecondToDegress("-21°36'49.46684676355439\"", "%.14f")).toEqual("-21.61374079076765");
+    });
+
     it("String(Degrees) To Radian => d.d", () => {
         expect(Format.stringToRadian("21.613740790767654")).toEqual(0.37723094047149835);
     });
@@ -107,5 +111,5 @@ describe("Format", () => {
     it("String(Rumo SW) To Radian", () => {
         expect(Format.stringToRadian("62°00'00\"NW", Units.DegreeMinuteSecond)).toEqual(5.201081170943102);
         expect(Format.radianToDegreeMinuteSecond(5.201081170943102, "%d°%d'%.14f\"")).toEqual("298°0'0.00000000000000\"");
-    });    
+    });
 });

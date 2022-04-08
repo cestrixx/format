@@ -134,6 +134,10 @@ export class Format {
     static stringToDegreeMinuteSecond(value: string, format = "%d°%d'%.4f\""): string {
         return this.radianToDegreeMinuteSecond(this.stringToRadian(value, Units.DegreeMinuteSecond), format);
     }
+
+    static degreeMinuteSecondToDegress(value: string, format = "%.4f"): string {
+        return this.radianToDegree(this.stringToRadian(value, Units.DegreeMinuteSecond), format);
+    }
 }
 
 export function degreeToRadian(degrees: number): number {
