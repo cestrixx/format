@@ -1,6 +1,18 @@
 import { Format, Units } from "../src/index";
 
 describe("Format", () => {
+    it("String To String(Degrees) => d.d", () => {
+        expect(Format.stringToDegree("21.613740790767654", "%.14f")).toEqual("21.61374079076765");
+    });
+
+    it("String To String(Degree Minute) => d°d.d'", () => {
+        expect(Format.stringToDegreeMinute("21°36.82444744605924'", "%2d°%.14f'")).toEqual("21°36.82444744605914'");
+    });
+
+    it("String To String(Degree Minute Seconds) => d°d'd.d\"", () => {
+        expect(Format.stringToDegreeMinuteSecond("21°36'49.46684676355439\"", "%d°%d'%.14f\"")).toEqual("21°36'49.46684676354926\"");
+    });
+
     it("String(Degrees) To Radian => d.d", () => {
         expect(Format.stringToRadian("21.613740790767654")).toEqual(0.37723094047149835);
     });

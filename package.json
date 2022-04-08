@@ -1,7 +1,10 @@
 {
   "name": "format",
   "version": "0.0.3",
-  "description": "Biblioteca de formatação de valores",
+  "keywords": [
+    "format",
+    "typescript"
+  ],
   "main": "./lib/index.js",
   "typings": "./lib/index.d.ts",
   "scripts": {

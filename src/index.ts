@@ -121,19 +121,23 @@ export class Format {
         }
     }
 
-    static stringToDegreeMinute(value: string) {
-        return this.radianToDegreeMinute(this.stringToRadian(value));
+    static stringToDegree(value: string, format = "%.4f"): string {
+        return this.radianToDegree(this.stringToRadian(value, Units.Degree), format);
     }
 
-    static stringToDegreeMinuteSecond(value: string) {
-        return this.radianToDegreeMinuteSecond(this.stringToRadian(value));
+    static stringToDegreeMinute(value: string, format = "%2d°%.4f'"): string {
+        return this.radianToDegreeMinute(this.stringToRadian(value, Units.DegreeMinute), format);
+    }
+
+    static stringToDegreeMinuteSecond(value: string, format = "%d°%d'%.4f\""): string {
+        return this.radianToDegreeMinuteSecond(this.stringToRadian(value, Units.DegreeMinuteSecond), format);
     }
 }
 
-function degreeToRadian(degrees: number): number {
+export function degreeToRadian(degrees: number): number {
 	return degrees * Math.PI / 180;
 }
 
-function radianToDegree(radians: number): number {
+export function radianToDegree(radians: number): number {
 	return radians * 180 / Math.PI;
 }
