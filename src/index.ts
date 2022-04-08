@@ -1,3 +1,4 @@
+import {sprintf} from "sprintf-js"
 
 export enum Units {
     Radian = 0,
@@ -66,8 +67,9 @@ export class Format {
         const degree: number = parseFloat(value);
         return degreeToRadian(degree);
     }
+
     static degreeMinuteToRadian(value: string): number {
-        const regex  = /^[\+-]?([1-8]?\d)\D+([1-6]?\d\.*\d*)\D*$/
+        const regex  = /^[\+-]?([0-9]+)\D+([0-9]+\.?[0-9]*|\.[0-9]+)\D*$/
         const values = regex.exec(value);
         if (values === null)
             throw new Error("Dados invalidos!")
@@ -76,8 +78,9 @@ export class Format {
         if (value.indexOf("-") >= 0) radian *= -1
         return radian;
     }
+
     static degreeMinuteSecondToRadian(value: string): number {        
-        const regex  = /^[\+-]?([1-8]?\d)\D+([1-5]?\d|60)\D+([1-5]?\d[\.\d]+|60)\D*$/
+        const regex  = /^[+-]?([0-9]+)\D+([0-9]+)\D+([0-9]+\.?[0-9]*|\.[0-9]+)\D*$/
         const values = regex.exec(value);
         if (!values)
             throw new Error("Dados invalidos!")
@@ -86,24 +89,51 @@ export class Format {
         if (value.indexOf("-") >= 0) radian *= -1
         return radian;
     }
-    static radianToDegreeMinute(value: number): string {
-        return "";
+
+    static radianToDegree(value: number, format = "%.4f"): string {
+        try {
+            return sprintf(format, radianToDegree(value));            
+        } catch (e) {
+            throw new Error("Formato invalido!")
+        }
     }
-    static radianToDegreeMinuteSecond(value: number): string {
-        return "";
+
+    static radianToDegreeMinute(value: number, format = "%2d°%.4f'"): string {
+        try {
+            const decimalDegress = radianToDegree(value);
+            const degrees = Math.floor(decimalDegress);
+            const minutes = ((decimalDegress*60) % 60);
+            return sprintf(format, degrees, minutes);            
+        } catch (e) {
+            throw new Error("Formato invalido!")
+        }
     }
+
+    static radianToDegreeMinuteSecond(value: number, format = "%d°%d'%.4f\""): string {
+        try {
+            const decimalDegress = radianToDegree(value);
+            const degrees = Math.floor(decimalDegress);
+            const minutes = Math.floor((decimalDegress*3600)/60) % 60
+            const seconds = (decimalDegress*3600 % 60)
+            return sprintf(format, degrees, minutes, seconds);            
+        } catch (e) {
+            throw new Error("Formato invalido!")
+        }
+    }
+
     static stringToDegreeMinute(value: string) {
         return this.radianToDegreeMinute(this.stringToRadian(value));
     }
+
     static stringToDegreeMinuteSecond(value: string) {
         return this.radianToDegreeMinuteSecond(this.stringToRadian(value));
     }
 }
 
-export function degreeToRadian(degrees: number): number {
+function degreeToRadian(degrees: number): number {
 	return degrees * Math.PI / 180;
 }
 
-export function radianToDegree(radians: number): number {
+function radianToDegree(radians: number): number {
 	return radians * 180 / Math.PI;
 }
