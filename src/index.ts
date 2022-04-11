@@ -8,7 +8,8 @@ export enum Units {
     DegreeMinuteSecond,
     Rumo,
     Latitude,
-    Longitude
+    Longitude,
+    Meters
 }
 
 export class Format {
@@ -32,6 +33,7 @@ export class Format {
             case Units.Rumo: resultValue = this.radianToRumo(radianValue, outputFormat); break;
             case Units.Latitude: resultValue = this.radianToLatitude(radianValue, outputFormat); break;
             case Units.Longitude: resultValue = this.radianToLongitude(radianValue, outputFormat); break;
+            case Units.Meters: resultValue = this.radianToMeters(radianValue, outputFormat); break;
             default: resultValue = ""; break;
         }
 
@@ -82,12 +84,13 @@ export class Format {
         return radianValue;
     }
 
-    static radianFormat = "%.4f"
-    static degreeFormat = "%.4f"
-    static degreeMinuteFormat = "%2d°%.4f'"
-    static degreeMinuteSecondFormat = "%d°%d'%.4f\""
-    static rumoFormat = "%d°%d'%.4f\"%s"
-    static latlonFormat = "%d°%d'%.4f\" %s"
+    static radianFormat = "%.2f"
+    static degreeFormat = "%.2f"
+    static degreeMinuteFormat = "%2d°%.2f'"
+    static degreeMinuteSecondFormat = "%d°%d'%.2f\""
+    static rumoFormat = "%d°%d'%.2f\""
+    static latlonFormat = "%d°%d'%.2f\" %s"
+    static metersFormat = "%.2f m"
 
     static radianToRadian(value: number, format: string|null = null): string {
         try {
@@ -185,6 +188,15 @@ export class Format {
             if (!format) format = this.latlonFormat;
             const sign = (value < 0) ? "W" : "E";
             return sprintf(format, degrees, minutes, seconds, sign); 
+        } catch (e) {
+            throw new Error("Formato invalido!")
+        }
+    }
+
+    static radianToMeters(value: number, format: string|null = null): string {
+        try {
+            if (!format) format = this.metersFormat;
+            return sprintf(format, radToDeg(value));            
         } catch (e) {
             throw new Error("Formato invalido!")
         }

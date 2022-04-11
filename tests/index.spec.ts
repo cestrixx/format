@@ -74,19 +74,19 @@ describe("Format", () => {
         expect(Format.stringToUnit("21 36 49.4668467635", Units.DegreeMinuteSecond, "%d°%d'%.10f\"")).toEqual("21°36'49.4668467635\"")
     });
     it("String To Degree Minute Second", () => {
-        expect(Format.stringToUnit("21°36'49.466846763554315\"", Units.DegreeMinuteSecond)).toEqual("21°36'49.4668\"")
+        expect(Format.stringToUnit("21°36'49.466846763554315\"", Units.DegreeMinuteSecond)).toEqual("21°36'49.47\"")
     });
     it("String To Latitude [S]", () => {
-        expect(Format.stringToUnit("-21°36'49.466846763554315\"", Units.Latitude)).toEqual("21°36'49.4668\" S")
+        expect(Format.stringToUnit("-21°36'49.466846763554315\"", Units.Latitude)).toEqual("21°36'49.47\" S")
     });
     it("String To Latitude [N]", () => {
-        expect(Format.stringToUnit("21°36'49.466846763554315\"", Units.Latitude)).toEqual("21°36'49.4668\" N")
+        expect(Format.stringToUnit("21°36'49.466846763554315\"", Units.Latitude)).toEqual("21°36'49.47\" N")
     });
     it("String To Longitude [W]", () => {
-        expect(Format.stringToUnit("21°36'49.466846763554315\" W", Units.Longitude)).toEqual("21°36'49.4668\" W")
+        expect(Format.stringToUnit("21°36'49.466846763554315\" W", Units.Longitude)).toEqual("21°36'49.47\" W")
     });
     it("String To Longitude [E]", () => {
-        expect(Format.stringToUnit("21°36'49.466846763554315\" E", Units.Longitude)).toEqual("21°36'49.4668\" E")
+        expect(Format.stringToUnit("21°36'49.466846763554315\" E", Units.Longitude)).toEqual("21°36'49.47\" E")
     });
     it("String To Rumo NE", () => {
         expect(Format.stringToUnit("21°36'49.466846763554315\"", Units.Rumo, "%d°%d'%.10f\"")).toEqual("21°36'49.4668467635\" NE")
@@ -111,5 +111,8 @@ describe("Format", () => {
     });
     it("String[NW] To Degree Minute Second", () => {
         expect(Format.stringToUnit("59°23'10.5331532363\" NW", Units.DegreeMinuteSecond, "%d°%d'%.10f\"")).toEqual("300°36'49.4668467636\"")
+    });
+    it("String To Meters", () => {
+        expect(Format.stringToUnit("1482.518", Units.Meters)).toEqual("1482.52 m")
     });
 });
