@@ -27,6 +27,7 @@ console.log(Format.stringToUnit("21°36'49.466846763554315\"", Units.DegreeMinut
 console.log(Format.stringToUnit("21°36'49.466846763554315\"", Units.DegreeMinuteSecond)) // 21°36'49.4668"
 console.log(Format.stringToUnit("21 36 49.4668467635", Units.DegreeMinuteSecond)) // 21°36'49.4668"
 console.log(Format.stringToUnit("21 36 49.4668467635", Units.DegreeMinuteSecond)) // 21°36'49.4668"
+// Rumo
 console.log(Format.stringToUnit("21°36'49.466846763554315\"", Units.Rumo)) // 21°36'49.4668" NE
 console.log(Format.stringToUnit("120°36'49.466846763554315\"", Units.Rumo)) // 59°23'10.5331" SE
 console.log(Format.stringToUnit("215°36'49.466846763554315\"", Units.Rumo)) // 35°36'49.4668" SW
@@ -39,4 +40,6 @@ console.log(Format.stringToUnit("-21°36'49.466846763554315\"", Units.Latitude))
 console.log(Format.stringToUnit("21°36'49.466846763554315\"", Units.Latitude)) // 21°36'49.4668" N
 console.log(Format.stringToUnit("21°36'49.466846763554315\" W", Units.Longitude)) // 21°36'49.4668" W
 console.log(Format.stringToUnit("21°36'49.466846763554315\" E", Units.Longitude)) // 21°36'49.4668" E
+// Distancia
+console.log(Format.stringToUnit("1482.518", Units.Meters)) // 1482.52 m
 ```
