@@ -13,6 +13,15 @@ export enum Units {
 }
 
 export class Format {
+    static valueToUnit(value: string | number, outputUnit: Units, outputFormat: string | null = null): string {
+        switch (typeof value) {
+            case "number": value = this.degreeToDegreeString(value, "%.20f"); break;
+            case "string": break;
+            default: throw new Error("Tipo de valor invalido!");
+        }
+        return this.stringToUnit(value, outputUnit, outputFormat);
+    }
+
     static stringToUnit(value: string, outputUnit: Units, outputFormat: string|null = null): string {
         const inputUnit: Units = this.identifyUnit(value);
         let degreeValue: number;
